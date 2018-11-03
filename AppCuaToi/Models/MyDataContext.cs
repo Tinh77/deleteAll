@@ -13,6 +13,38 @@ namespace AppCuaToi.Models
         {
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Category>().HasData(
+                new Category()
+                {
+                    id = 1,
+                    name = "Quần"
+                },
+                new Category()
+                {
+                    id = 2,
+                    name = "Áo"
+                }
+            );
+            modelBuilder.Entity<Product>().HasData(
+                new Product()
+                {
+                    id = 1,
+                    name = "Quần đùi",
+                    categoryId = 1
+                },
+                new Product()
+                {
+                    id = 2,
+                    name = "Áo khoác",
+                    categoryId = 2
+                }
+            );
+        }
+
+
         public DbSet<Product> Products { get; set; }
+        public DbSet<Category> Categories { get; set; }
     }
 }

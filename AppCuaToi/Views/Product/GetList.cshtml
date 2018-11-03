@@ -12,21 +12,25 @@
                 <td><input type="checkbox" id="check-all" /></td>
                 <td>Id</td>
                 <td>Image</td>
+                <td>Name</td>
                 <td>Description</td>
+                <td>Category</td>
                 <td>Action</td>
             </tr>
             @foreach (var product in Model)
             {
-                <tr>
-                    <td><input type="checkbox" class="check-item" id="check-id-@product.id"/></td>
-                    <td>@product.id</td>
-                    <td> <img width="100px" src="@product.thumbnail" alt="Trang-banh-ngon-cua-toi" /></td>
-                    <td>@product.description</td>
-                    <td>
-                        <span><a href="/Product/Edit?id=@product.id"><i class="far fa-edit"></i></a></span>&nbsp;|&nbsp;
-                        <span><a href="#" class="btn-delete" id="@product.id"><i class="far fa-trash-alt"></i></a></span>
-                    </td>
-                </tr>
+            <tr>
+                <td><input type="checkbox" class="check-item" id="check-id-@product.id" /></td>
+                <td>@product.id</td>
+                <td> <img width="100px" src="@product.thumbnail" alt="Trang-banh-ngon-cua-toi" /></td>
+                <td>@product.name</td>
+                <td>@product.description</td>
+                <td> <a href="Category/Detail/@product.categoryId">@product.Category.name</a> </td>
+                <td>
+                    <span><a href="/Product/Edit?id=@product.id"><i class="far fa-edit"></i></a></span>&nbsp;|&nbsp;
+                    <span><a href="#" class="btn-delete" id="@product.id"><i class="far fa-trash-alt"></i></a></span>
+                </td>
+            </tr>
             }
             <button type="button" id="delete-all">Delete All</button>
         </table>

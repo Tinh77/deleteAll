@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AppCuaToi.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace AppCuaToi.Controllers
 {
@@ -17,10 +18,11 @@ namespace AppCuaToi.Controllers
         }
         public IActionResult GetList()
         {
-            return View(_context.Products.ToList());
+            return View(_context.Products.Include(c => c.Category).ToList());
         }
         public IActionResult Create()
         {
+           
             return View();
         }
 
@@ -85,7 +87,7 @@ namespace AppCuaToi.Controllers
                     return NotFound();
                 }
                 _context.Products.Remove(product);
-                
+
             }
             _context.SaveChanges();
             TempData["message"] = "Delete all success";

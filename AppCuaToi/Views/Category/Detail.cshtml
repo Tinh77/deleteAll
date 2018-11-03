@@ -1,0 +1,31 @@
+﻿@model AppCuaToi.Models.Category
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<h2>Detail</h2>
+
+<div>
+    <table class="table">
+        <tr>
+            <td><input type="checkbox" id="check-all" /></td>
+            <td>Id</td>
+            <td>Name</td>
+            <td>Description</td>
+            <td>Action</td>
+        </tr>
+        @foreach (var category in Model.ListProduct)
+        {
+            <tr>
+                <td><input type="checkbox" class="check-item" id="check-id-@category.id" /></td>
+                <td>@category.id</td>
+                <td>@category.name</td>
+                <td>@category.description</td>
+                <td>
+                    <span><a href="/Product/Edit?id=@category.id"><i class="far fa-edit"></i></a></span>&nbsp;|&nbsp;
+                    <span><a href="#" class="btn-delete" id="@category.id"><i class="far fa-trash-alt"></i></a></span>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
